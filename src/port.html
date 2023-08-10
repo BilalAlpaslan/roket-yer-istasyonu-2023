@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Yer istasyonu</title>
+</head>
+
+<body>
+    <button id="refresh-btn">Yenile</button>
+
+    <form id="connect-form-main">
+        <label for="port-select-main">Bağlanmak İstediğiniz Port:</label>
+        <select id="port-select-main" name="port"></select>
+        <label for="baud-rate-select-main">Baudrate:</label>
+        <select id="baud-rate-select-main" name="baudRate">
+            <option value="9600">9600</option>
+            <option value="19200">19200</option>
+            <option value="115200">115200</option>
+        </select>
+        <button type="submitMain">Bağlan</button>
+    </form>
+
+    <form id="connect-form-payload">
+        <label for="port-select-payload">Bağlanmak İstediğiniz Port:</label>
+        <select id="port-select-payload" name="port"></select>
+        <label for="baud-rate-select-payload">Baudrate:</label>
+        <select id="baud-rate-select-payload" name="baudRate">
+            <option value="9600">9600</option>
+            <option value="19200">19200</option>
+            <option value="115200">115200</option>
+        </select>
+        <button type="submitPayload">Bağlan</button>
+    </form>
+
+    <form id="connect-form-hyi">
+        <label for="port-select-hyi">Bağlanmak İstediğiniz Port:</label>
+        <select id="port-select-hyi" name="port"></select>
+        <label for="baud-rate-select-hyi">Baudrate:</label>
+        <select id="baud-rate-select-hyi" name="baudRate">
+            <option value="9600">9600</option>
+            <option value="19200">19200</option>
+            <option value="115200">115200</option>
+        </select>
+        <button type="submitHyi">Bağlan</button>
+    </form>
+
+    <script src="port.renderer.js"></script>
+</body>
+
+</html>

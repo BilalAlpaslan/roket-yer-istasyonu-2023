@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="index.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MTT-Sipahi</title>
+</head>
+
+<body>
+    <div class="takim-adi">
+        <h1 style="text-align: center; margin-bottom: 20px; color: #0d2e56; font-weight: 900;">MTT-Sipahi Yer İstasyonu</h1>
+    </div>
+    <div class="top-bar">
+        <div class="info-item">
+            <div class="header" style="border: none;">
+                <p>Kurtarma Durumu</p>
+                <button id="port-window-btn">Port ayarları</button>
+            </div>
+            <div class="tetikleme-tablosu">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Birincil Paraşüt</th>
+                            <th>İkincil Paraşüt</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="kurtarma-1" class="nantrigger">Tetiklenmedi</td>
+                            <td id="kurtarma-2" class="nantrigger">Tetiklenmedi</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="info-item">
+            <div class="header">
+                <p class="pakettt">Paket No</p>
+                <p class="saatt">Saat</p>
+            </div>
+            <div class="info-item-content saat-paket">
+                <div class="paket-no">
+                    <p id="paket" class="first">14</p>
+                    <!-- <p id="paket-2" class="second">15</p>
+                    <p id="paket-3" class="third">16</p>
+                    <p id="paket-4" class="fourth">17</p> -->
+                </div>
+                <div id="saat" class="saat">
+                    12.25.34
+                </div>
+            </div>
+        </div>
+        <div class="info-item">
+            <div class="header">
+                <p>Irtifa</p>
+
+            </div>
+            <div class="info-item-content">
+                <p id="irtifa" class="first">12131 metre</p>
+                <!-- <p class="second">2457,21 metre</p>
+                <p class="third">2667,21 metre</p>
+                <p class="fourth">2857,21 metre</p> -->
+            </div>
+        </div>
+        <div class="info-item">
+            <div class="header">
+                <p>Sıcaklik</p>
+            </div>
+            <div class="info-item-content">
+                <p id="sicaklik" class="first">215,56 m/s</p>
+                <!-- <p class="second">205,26 m/s</p>
+                <p class="third">175,55 m/s</p>
+                <p class="fourth">140,36 m/s</p> -->
+            </div>
+        </div>
+        <div class="info-item">
+            <div class="header">
+                <p>Basinc</p>
+
+            </div>
+            <div class="info-item-content">
+                <p id="basinc" class="first">123213hPa</p>
+                <!-- <p class="second">2457,21 metre</p>
+                <p class="third">2667,21 metre</p>
+                <p class="fourth">2857,21 metre</p> -->
+            </div>
+        </div>
+        <div class="info-item">
+            <div class="header">
+                <p>Gyro</p>
+
+            </div>
+            <div class="info-item-content">
+                <p id="gyro_x" class="first">x = </p>
+                <p id="gyro_y" class="first">y  = </p>
+                <!-- <p class="second">2457,21 metre</p>
+                <p class="third">2667,21 metre</p>
+                <p class="fourth">2857,21 metre</p> -->
+            </div>
+        </div>
+        
+    </div>
+    <div class="bottom-bar">
+        <div class="info-item gps-item">
+            <div class="gps-header">
+                <p style="font-size:20px;">Roket Konum</p>
+                <p id="lat">Lat : </p>
+                <p id="lon">Lon : </p>
+                <div class="uydu-sayisi">
+                    <p id="sat">Uydu Sayisi : </p>
+                </div>
+            </div>
+            <div id="map" class="GPS">
+                <p>Harita yükleniyor...</p>
+            </div>
+        </div>
+        <div class="info-item roket-gyro">
+            <p class="roket-gyro-header">Veri Terminali</p>
+            <div class="roket-gyro-content" >
+                    <div class="background-config" 
+                    style="
+                    color: white;
+                    background-color: #0d2e56;
+                    height: 100%; width: 90%;
+                    overflow-y: scroll;
+                    "
+                     id="terminal"></div>
+            </div>
+        </div>
+    </div>
+    <div id="payload-bar">
+        <div class="payload-info" > <div class="header">İRTİFA</div>  <div id="payload-irtifa">0</div></div>
+        <div class="payload-info"> <div class="header"> SICAKLIK </div> <div id="payload-sicaklik">0</div></div>
+        <div class="payload-info"> <div class="header"> BASINÇ </div> <div  id="payload-basinc">0</div></div>
+        <div class="payload-info"> <div class="header"> NEM </div> <div id="payload-nem">0</div></div>
+        <div class="payload-info" > <div class="header">KONUM </div>
+            <div> LAT :<div id="payload-lat">0</div></div>
+            <div>LON:<div id="payload-lon">0</div></div>
+        </div>
+        </div>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly&libraries=geometry,places"
+        defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/build/three.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+    <script src="index.renderer.js"></script>
+
+
+
+</body>
+
+</html>
