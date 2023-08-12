@@ -79,6 +79,18 @@ let payload_lon = document.getElementById('payload-lon')
 
 let sayac = 0;
 
+let gps_type = "main" // main, payload
+let gps_btn = document.getElementById('gps-btn')
+gps_btn.addEventListener('click', () => {
+    if (gps_type == "main") {
+        gps_type = "payload"
+        gps_btn.innerText = "Payload GPS"
+    } else {
+        gps_type = "main"
+        gps_btn.innerText = "Main GPS"
+    }
+})
+
 ipcRenderer.on('data-received', (event, data) => {
     let datas = data.split(',');
     raw_datas.push(datas);
@@ -125,8 +137,15 @@ ipcRenderer.on('data-received', (event, data) => {
     lon.innerText = 'lon = ' + lon_datas[lon_datas.length - 1];
     sat.innerText = 'Uydu Sayisi = ' + sat_datas[sat_datas.length - 1];
 
-    loc.lat = parseFloat(lat_datas[lat_datas.length - 1]);
-    loc.lng = parseFloat(lon_datas[lon_datas.length - 1]);
+    // loc.lat = parseFloat(lat_datas[lat_datas.length - 1]);
+    // loc.lng = parseFloat(lon_datas[lon_datas.length - 1]);
+    if (gps_type == "main") {
+        loc.lat = parseFloat(lat_datas[lat_datas.length - 1]);
+        loc.lng = parseFloat(lon_datas[lon_datas.length - 1]);
+    } else {
+        loc.lat = parseFloat(payload_lat_datas[payload_lat_datas.length - 1]);
+        loc.lng = parseFloat(payload_lon_datas[payload_lon_datas.length - 1]);
+    }
 
     // 78 byte array
     let byte_data = convert_to_bytes(
