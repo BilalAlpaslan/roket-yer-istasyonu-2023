@@ -57,6 +57,7 @@ let payload_nem_datas = [];
 let payload_lat_datas = [];
 let payload_lon_datas = [];
 
+let pakettt = document.getElementById('pakettt')
 let terminal = document.getElementById('terminal')
 let kurtarma_1 = document.getElementById('kurtarma-1')
 let kurtarma_2 = document.getElementById('kurtarma-2')
@@ -175,6 +176,7 @@ ipcRenderer.on('data-received-payload', (event, data) => {
     payload_sicaklik_datas.push(data[4]);
     payload_basinc_datas.push(data[5]);
 
+    pakettt.innerText = sayac;
     payload_irtifa.innerText = payload_irtifa_datas[payload_irtifa_datas.length - 1] + ' m';
     payload_lat.innerText = payload_lat_datas[payload_lat_datas.length - 1];
     payload_lon.innerText = payload_lon_datas[payload_lon_datas.length - 1];
