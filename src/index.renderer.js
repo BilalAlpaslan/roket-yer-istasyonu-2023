@@ -154,14 +154,14 @@ ipcRenderer.on('data-received', (event, data) => {
         parseFloat(irtifa_datas[irtifa_datas.length - 1]),
         parseFloat(lat_datas[lat_datas.length - 1]),
         parseFloat(lon_datas[lon_datas.length - 1]),
-        parseFloat(gps_alt_datas[sicaklik_datas.length - 1]),
+        parseFloat(gps_alt_datas[gps_alt_datas.length - 1]),
         parseFloat(payload_lat_datas[payload_lat_datas.length - 1]),
         parseFloat(payload_lon_datas[payload_lon_datas.length - 1]),
         parseFloat(payload_irtifa_datas[payload_irtifa_datas.length - 1]),
         parseFloat(gyro_x_datas[gyro_x_datas.length - 1]),
         parseFloat(gyro_y_datas[gyro_y_datas.length - 1]),
         0.0,
-        0,
+        5,
     );
 
     ipcRenderer.send('send-hyi', byte_data);
@@ -208,7 +208,7 @@ function convert_to_bytes(
     my_bytes[2] = 0x54;
     my_bytes[3] = 0x52;
     // TAKIM ID SINI BURAYA YAZICAKSINN !!!!!!!
-    my_bytes[4] = new Uint8Array([85])[0];
+    my_bytes[4] = new Uint8Array([5])[0];
     my_bytes[5] = new Uint8Array([sayac])[0];
 
     irtifa = typeof irtifa === "number" ? irtifa : 0.0;
